@@ -1,3 +1,4 @@
+// Weird Algorithm
 #include <iostream>
 
 #define endl '\n'

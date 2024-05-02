@@ -1,3 +1,4 @@
+# Trailing Zeros
 n = int(input())
 
 ret = 0
