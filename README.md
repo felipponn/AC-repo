@@ -6,9 +6,7 @@ Welcome to my Competitive Programming Solutions Repository. Here you will find a
 
 1. [About](#about)
 2. [Sites Covered](#sites-covered)
-3. [How to Contribute](#how-to-contribute)
-4. [Code Style Guidelines](#code-style-guidelines)
-5. [License](#license)
+3. [License](#license)
 
 ## About
 
