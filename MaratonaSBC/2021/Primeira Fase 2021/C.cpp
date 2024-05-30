@@ -1,4 +1,3 @@
-// 01/08/23 //
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -28,6 +27,20 @@ const int INF  = 0x3f3f3f3f;
 const int MAXN = (2e5) + 5;
 const int MOD  = (1e9) + 7;
 
+int phi(int n) {
+    int result = n;
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) {
+            while (n % i == 0)
+                n /= i;
+            result -= result / i;
+        }
+    }
+    if (n > 1)
+        result -= result / n;
+    return result;
+}
+
 ll exp(ll a, ll b, ll m=MOD){ // 0^0 = 1
     ll r = 1LL;
 
@@ -47,41 +60,37 @@ ll exp(ll a, ll b, ll m=MOD){ // 0^0 = 1
 
 int main(){
     fast_io;
+     
+    ll b, n;
+    cin >> b >> n;
 
-    int l;
-    ll pot, b, di, check = 0LL;
-    vector<int> d;
+    vector<ll> digit(n+1);
+    ll k = 0LL;
+    ll mod = b+1LL;
+    
+    for(int i=1; i<=n; i++){
+        cin >> digit[i];
 
-    cin >> b >> l;
-
-    for (int i = 0; i < l; i++)
-    {
-        cin >> di;
-        d.PB(di);
-        if (i%2)
-            check -= di;
-        else
-            check += di;
+        k = (k + (digit[i] * exp(b, n-i, b+1))%mod)%mod;
     }
 
-    check %= (b+1);
-
-    if (check == 0LL)
-    {
-        cout << 0 << " " << 0 << endl;
+    if(k==0){
+        cout << "0 0" << endl;
         return 0;
     }
-    
-    for (int i = 0; i < l; i++)
-    {
-        if (d[i] >= check)
-        {
-            cout << i+1 << " " << (d[i]-check) << endl;
+
+    ll inv_b = exp(b, phi(b+1)-1, mod);
+
+    for(int i=1; i<=n; i++){
+        ll d = (k * exp(inv_b, n-i, mod))%mod;
+
+        if(d<=digit[i]){
+            cout << i << " " << digit[i]-d << endl;
             return 0;
         }
     }
 
-    cout << -1 << " " << -1 << endl;
+    cout << "-1 -1" << endl;
 
     return 0;
 }

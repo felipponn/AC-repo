@@ -1,1 +1,0 @@
-[problems](https://codeforces.com/gym/101915)
