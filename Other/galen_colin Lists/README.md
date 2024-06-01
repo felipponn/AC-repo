@@ -1,0 +1,1 @@
+Mashup lists proposed by [galen_colin](https://codeforces.com/profile/galen_colin). Thanks for all the resources!
